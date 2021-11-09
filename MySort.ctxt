@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.target=MySort
+comment1.params=data\ zf
+comment1.target=MySort(int[],\ Zahlenfeld)
+comment2.params=
+comment2.target=java.lang.String\ toString()
+comment3.params=
+comment3.target=int\ Minimum()
+comment4.params=
+comment4.target=int\ Maximum()
+comment5.params=
+comment5.target=long\ sortiere()
+numComments=6

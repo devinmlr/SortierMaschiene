@@ -1,0 +1,19 @@
+#BlueJ class context
+comment0.target=Zahlenfeld
+comment1.params=data
+comment1.target=Zahlenfeld(int[])
+comment2.params=data
+comment2.target=void\ setData(int[])
+comment3.params=
+comment3.target=void\ init()
+comment4.params=
+comment4.target=int[]\ getData()
+comment5.params=
+comment5.target=java.awt.Color[]\ getColor()
+comment6.params=i\ color
+comment6.target=void\ setColor(int,\ java.awt.Color)
+comment7.params=
+comment7.target=void\ resetColor()
+comment8.params=g
+comment8.target=void\ paint(java.awt.Graphics)
+numComments=9
