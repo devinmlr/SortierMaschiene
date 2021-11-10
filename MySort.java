@@ -2,7 +2,7 @@ import java.awt.Color;
 
 public class MySort extends Sortierer
 {
-    
+    private Sound2 sound = new Sound2();
     MySort(int[] data, Zahlenfeld zf){
         super(data, zf);
     }
@@ -11,28 +11,7 @@ public class MySort extends Sortierer
         return "MinMaxSort";
     }
     
-    public int Minimum () {
-        int h=8000;
-        for (int i=0; i<data.length; i++) {
-            if (data[i]<h) {
-                h=data[i];
-            }
-        }
-        
-        return h;
-    }
-    
-    public int Maximum () {
-        int h=0;
-        for (int i=0; i<data.length; i++) {
-            if (data[i]>h) {
-                h=data[i];
-            }
-        }
-        
-        return h;
-    }
-    
+       
     public long sortiere(){
         // HINWEISE ===================================================
         // Zugriff auf Zahlenfeld per data[i]
@@ -57,7 +36,9 @@ public class MySort extends Sortierer
                         num=data[f];
                         help=f;
                     }
+                    java.awt.Toolkit.getDefaultToolkit().beep();
                     zf.repaint();
+                    
                 }
                 data[help] = data[h];
                 data[h] = num;
@@ -70,6 +51,8 @@ public class MySort extends Sortierer
                         num=data[f];
                         help=f;
                     }
+                    
+                    java.awt.Toolkit.getDefaultToolkit().beep();
                     zf.repaint();
                 }
                 data[help] = data[data.length-h-1];
@@ -78,7 +61,10 @@ public class MySort extends Sortierer
                 if (!isRunning()) {
                     break;   
                 }
-                
+                try {
+                      sound.tone(h*100, 10);
+                    }
+                    catch (Exception e) {}
                 pause();
             }
         

@@ -7,6 +7,8 @@ import java.awt.Color;
  */
 public class BubbleSort extends Sortierer
 {
+    private Sound2 sound = new Sound2();
+    
     
     BubbleSort(int[] data, Zahlenfeld zf){
         super(data, zf);    
@@ -34,6 +36,10 @@ public class BubbleSort extends Sortierer
                   data[i]=data[i+1];
                   data[i+1]=h;
                   vertauscht=true;
+                  try {
+                      sound.tone(data[i]*50, 10);
+                    }
+                    catch (Exception e) {}
                 }
                 pause();
                 if (!isRunning()) {

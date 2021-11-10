@@ -1,28 +1,9 @@
-import javax.swing.JFrame;
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JTextField;
-import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
-import java.awt.Color;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import java.text.NumberFormat;
-import javax.swing.text.NumberFormatter;
-import javax.swing.JFormattedTextField;
-import javax.swing.JScrollBar;
-import javax.swing.JSlider;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
-import java.util.Vector;
-import javax.swing.JComboBox;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
-import javax.swing.JCheckBox;
-import javax.swing.event.DocumentListener;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
 import javax.swing.event.*;
-import javax.swing.ComboBoxModel;
-import javax.swing.DefaultComboBoxModel;
+import java.util.Vector;
+import java.text.NumberFormat;
 
 public class Main extends JFrame
 {
@@ -41,6 +22,7 @@ public class Main extends JFrame
     JButton stop;
     JButton bDoStep;
     JCheckBox cbSteps;
+    JCheckBox cbTone;
     JTextArea messages;
     JLabel lAnzahl;
     JTextField tfAnzahl;
@@ -147,6 +129,7 @@ public class Main extends JFrame
         
         cbSteps=new JCheckBox("Step by Step");
         cbSteps.setBounds(10,220,100,25);
+        
         cbSteps.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
                 ((Sortierer)list.getSelectedItem()).setStepMode(cbSteps.isSelected());
@@ -155,6 +138,19 @@ public class Main extends JFrame
             }
         });
         add(cbSteps);
+        
+        cbTone=new JCheckBox("Ton?");
+        cbTone.setBounds(10,250,100,25);
+        
+        cbTone.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                //((Sortierer)list.getSelectedItem()).setStepMode(cbSteps.isSelected());
+                //((Sortierer)list.getSelectedItem()).doStep();
+                //if (!st.isEnabled()) bDoStep.setEnabled(cbSteps.isSelected());
+            }
+        });
+        
+        add(cbTone);
         
         bDoStep=new JButton("Do Step");
         bDoStep.setEnabled(false);
