@@ -16,6 +16,7 @@ public class Main extends JFrame
     DefaultComboBoxModel<Sortierer> sortiererListe=new DefaultComboBoxModel<Sortierer>();
     boolean run=false;
     boolean stepToDo=true;
+    //boolean tSelected = true;
     JFormattedTextField field;
     JTextArea text;
     JButton st;
@@ -28,6 +29,7 @@ public class Main extends JFrame
     JTextField tfAnzahl;
     JComboBox list;
     JSlider sl;
+    JSlider slVol;
     
     public void resetList(){
         sortiererListe.removeAllElements();
@@ -79,6 +81,8 @@ public class Main extends JFrame
                zf.init();
                zf.repaint();
                resetList();
+               
+               
            }
         });
         add(reset);
@@ -144,13 +148,11 @@ public class Main extends JFrame
         
         cbTone.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
-                //((Sortierer)list.getSelectedItem()).setStepMode(cbSteps.isSelected());
-                //((Sortierer)list.getSelectedItem()).doStep();
-                //if (!st.isEnabled()) bDoStep.setEnabled(cbSteps.isSelected());
+                ((Sortierer)list.getSelectedItem()).toggleTon();
             }
         });
         
-        add(cbTone);
+        //add(cbTone);
         
         bDoStep=new JButton("Do Step");
         bDoStep.setEnabled(false);
@@ -173,9 +175,7 @@ public class Main extends JFrame
         });
         add(r);*/
         
-        JLabel l=new JLabel();
-        l.setBounds(120,250,100,25);
-        add(l);
+        
                
         /*NumberFormat format = NumberFormat.getInstance();
         NumberFormatter formatter = new NumberFormatter(format);
@@ -189,6 +189,10 @@ public class Main extends JFrame
         field.setText("100");
         field.setBounds(230,250,100,25);
         add(field);*/
+        JLabel l=new JLabel();
+        l.setBounds(120,250,100,25);
+        add(l);
+        
         sl=new JSlider();
         sl.setBounds(230,250,100,25);
         sl.setMinimum(0);
@@ -203,6 +207,25 @@ public class Main extends JFrame
         });
         add(sl);
         
+        
+        JLabel lVol=new JLabel();
+        lVol.setBounds(120,275,100,25);
+        add(lVol);
+        
+        slVol=new JSlider();
+        slVol.setBounds(230,275,100,25);
+        slVol.setMinimum(0);
+        slVol.setMaximum(100);
+        slVol.setValue(100);
+        lVol.setText("Volume "+slVol.getValue()+" %");
+        slVol.addChangeListener(new ChangeListener() {
+            public void stateChanged(ChangeEvent event) {
+                lVol.setText("Volume "+slVol.getValue()+" %");
+                ((Sortierer)list.getSelectedItem()).setVolume(slVol.getValue());
+            }
+        });
+        add(slVol);
+        
         messages=new JTextArea();
         messages.getDocument().addDocumentListener(new DocumentListener() {
             @Override
@@ -215,7 +238,7 @@ public class Main extends JFrame
             public void changedUpdate(DocumentEvent arg0) {}
         });
         JScrollPane sp=new JScrollPane(messages);
-        sp.setBounds(10,280,400,300);
+        sp.setBounds(10,325,400,300);
         add(sp);
         
         addWindowListener(new WindowAdapter()
@@ -232,7 +255,7 @@ public class Main extends JFrame
         });
         setVisible(true);
     }
-    
+        
     public static void main(String[] a)
     {
         new Main();

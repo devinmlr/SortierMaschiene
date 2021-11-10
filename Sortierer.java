@@ -7,6 +7,7 @@
  */
 public abstract class Sortierer
 {
+    private float volume;
     private int delay=100;
     private boolean running=true;
     public Zahlenfeld zf;
@@ -14,6 +15,7 @@ public abstract class Sortierer
     private long starttime;
     private boolean stepMode=false;
     private boolean waitForStep=true;
+    boolean ton=true;
     
     Sortierer(int[] data, Zahlenfeld zf){
         this.zf=zf;
@@ -70,6 +72,22 @@ public abstract class Sortierer
     
     public void stop(){
         running=false;
+    }
+    
+    public void toggleTon () {
+        if (ton) {
+            ton = false;
+        } else {
+            ton = true;
+        }
+    }
+    
+    public void setVolume (float volume) {
+        this.volume = volume/100;
+    }
+    
+    public float getVolume () {
+        return volume;
     }
     
     public abstract long sortiere();

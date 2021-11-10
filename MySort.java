@@ -2,7 +2,9 @@ import java.awt.Color;
 
 public class MySort extends Sortierer
 {
-    private Sound2 sound = new Sound2();
+    private Tone sound = new Tone();
+    
+    
     MySort(int[] data, Zahlenfeld zf){
         super(data, zf);
     }
@@ -61,11 +63,12 @@ public class MySort extends Sortierer
                 if (!isRunning()) {
                     break;   
                 }
+                /*
                 try {
-                      sound.tone(h*100, 10);
-                    }
-                    catch (Exception e) {}
-                pause();
+                    sound.sound(data[h]*20+100, getDelay(), getVolume());
+                }
+                catch (Exception e) {}*/
+                
             }
         
         
