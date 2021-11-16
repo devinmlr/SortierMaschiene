@@ -13,9 +13,10 @@ public abstract class Sortierer
     public Zahlenfeld zf;
     public int[] data;
     private long starttime;
-    private boolean stepMode=false;
+    public boolean stepMode=false;
     private boolean waitForStep=true;
     boolean ton=true;
+    public int abfragen;
     
     Sortierer(int[] data, Zahlenfeld zf){
         this.zf=zf;
@@ -24,6 +25,10 @@ public abstract class Sortierer
     
     public void setStepMode(boolean stepMode){
         this.stepMode=stepMode;
+    }
+    
+    public boolean getStepMode() {
+        return stepMode;
     }
     
     public abstract String toString();
@@ -88,6 +93,10 @@ public abstract class Sortierer
     
     public float getVolume () {
         return volume;
+    }
+    
+    public int getAbfragen() {
+        return abfragen;
     }
     
     public abstract long sortiere();

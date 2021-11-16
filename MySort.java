@@ -34,6 +34,7 @@ public class MySort extends Sortierer
                 num=8000;
                 for (int f=h; f<data.length-h; f++) {
                     //zf.setColor(f,Color.RED);
+                    abfragen += 1;
                     if (data[f]<num) {
                         num=data[f];
                         help=f;
@@ -49,6 +50,7 @@ public class MySort extends Sortierer
                 num=0;
                 for (int f=h; f<data.length-h; f++) {
                     zf.setColor(f,Color.RED);
+                    abfragen += 1;
                     if (data[f]>num) {
                         num=data[f];
                         help=f;
@@ -63,12 +65,15 @@ public class MySort extends Sortierer
                 if (!isRunning()) {
                     break;   
                 }
-                /*
+                
                 try {
                     sound.sound(data[h]*20+100, getDelay(), getVolume());
                 }
-                catch (Exception e) {}*/
+                catch (Exception e) {}
                 
+                if (stepMode) {
+                    pause();
+                }
             }
         
         

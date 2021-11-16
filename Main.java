@@ -35,12 +35,14 @@ public class Main extends JFrame
         sortiererListe.removeAllElements();
         sortiererListe.addElement(new BubbleSort(data,zf));
         sortiererListe.addElement(new MySort(data,zf));
+        sortiererListe.addElement(new QuickSort(data,zf));
         //TO DO: Hier Sortierer an die Liste anfügen
     }
     
     public Main(){
         setBounds(100,100,500,700);
         setLayout(null);
+        getContentPane().setBackground(Color.darkGray);
 
         zf.setBounds(10,10,350,100);
         zf.init();
@@ -49,16 +51,19 @@ public class Main extends JFrame
         
         lAnzahl=new JLabel("Anzahl");
         lAnzahl.setBounds(10,120,100,25);
+        lAnzahl.setForeground(Color.white);
         add(lAnzahl);
         
         tfAnzahl=new JTextField("50");
         tfAnzahl.setBounds(120,120,100,25);
+        tfAnzahl.setForeground(Color.black);
         add(tfAnzahl);
                 
         resetList();
         
         list=new JComboBox(sortiererListe);
         list.setBounds(120,160,200,25);
+        list.setOpaque(true);
         list.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
                 if (list.getSelectedItem()!=null){
@@ -70,6 +75,8 @@ public class Main extends JFrame
         add(list);
            
         JButton reset=new JButton("Reset");
+        reset.setForeground(Color.white);
+        reset.setBackground(Color.gray);
         reset.setBounds(10,160,100,25);
         reset.addActionListener(new ActionListener(){
            public void actionPerformed(ActionEvent e){
@@ -88,6 +95,8 @@ public class Main extends JFrame
         add(reset);
         
         st=new JButton("Start");
+        st.setForeground(Color.white);
+        st.setBackground(Color.gray);
         st.setBounds(10,190,100,25);
         st.addActionListener(new ActionListener(){
            public void actionPerformed(ActionEvent e){
@@ -101,9 +110,12 @@ public class Main extends JFrame
                     @Override
                     public void run() {
                        //System.out.println("Thread startet..."+this);
+                       messages.append(list.getSelectedItem().toString() + ": \n");
                        ((Sortierer)list.getSelectedItem()).start();
                        long time=((Sortierer)list.getSelectedItem()).sortiere();
                        messages.append("Laufzeit: "+time+" Nanosekunden\n");
+                       int abfragen=((Sortierer)list.getSelectedItem()).getAbfragen();
+                       messages.append("Aufrufe: "+abfragen+" \n");
                        //System.out.println("Thread stopped..."+this);
                        stop.setEnabled(false);
                        st.setEnabled(true);
@@ -116,6 +128,8 @@ public class Main extends JFrame
         add(st);
         
         stop=new JButton("Stop");
+        stop.setForeground(Color.white);
+        stop.setBackground(Color.gray);
         stop.setEnabled(false);
         stop.setBounds(120,190,100,25);
         stop.addActionListener(new ActionListener(){
@@ -132,6 +146,8 @@ public class Main extends JFrame
         add(stop);
         
         cbSteps=new JCheckBox("Step by Step");
+        cbSteps.setOpaque(false);
+        cbSteps.setForeground(Color.white);
         cbSteps.setBounds(10,220,100,25);
         
         cbSteps.addActionListener(new ActionListener(){
@@ -155,6 +171,8 @@ public class Main extends JFrame
         //add(cbTone);
         
         bDoStep=new JButton("Do Step");
+        bDoStep.setForeground(Color.white);
+        bDoStep.setBackground(Color.gray);
         bDoStep.setEnabled(false);
         bDoStep.setBounds(120,220,100,25);
         bDoStep.addActionListener(new ActionListener(){
@@ -198,7 +216,9 @@ public class Main extends JFrame
         sl.setMinimum(0);
         sl.setMaximum(100);
         sl.setValue(100);
+        sl.setOpaque(false);
         l.setText("Pause "+sl.getValue()+" ms");
+        l.setForeground(Color.white);
         sl.addChangeListener(new ChangeListener() {
             public void stateChanged(ChangeEvent event) {
                 l.setText("Pause "+sl.getValue()+" ms");
@@ -217,7 +237,9 @@ public class Main extends JFrame
         slVol.setMinimum(0);
         slVol.setMaximum(100);
         slVol.setValue(100);
+        slVol.setOpaque(false);
         lVol.setText("Volume "+slVol.getValue()+" %");
+        lVol.setForeground(Color.white);
         slVol.addChangeListener(new ChangeListener() {
             public void stateChanged(ChangeEvent event) {
                 lVol.setText("Volume "+slVol.getValue()+" %");
@@ -227,6 +249,9 @@ public class Main extends JFrame
         add(slVol);
         
         messages=new JTextArea();
+        messages.setFont(new Font("Arial", Font.BOLD, 15));
+        messages.setForeground(Color.white);
+        messages.setBackground(Color.gray);
         messages.getDocument().addDocumentListener(new DocumentListener() {
             @Override
             public void removeUpdate(DocumentEvent e) {}

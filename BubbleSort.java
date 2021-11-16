@@ -31,6 +31,7 @@ public class BubbleSort extends Sortierer
                 zf.setColor(i,Color.RED);
                 zf.setColor(i+1,Color.GREEN);
                 zf.repaint();
+                abfragen += 1;
                 if (data[i]>data[i+1]){
                   h=data[i];
                   data[i]=data[i+1];
@@ -40,10 +41,14 @@ public class BubbleSort extends Sortierer
                 if (!isRunning()) {
                     break;   
                 }
-                    try {
+                    
+                try {
                           sound.sound(data[i]*20+100, getDelay(), getVolume());
                         }
                         catch (Exception e) {}
+                if (stepMode) {
+                    pause();
+                }
             }
         } while (vertauscht);
         return getTime();

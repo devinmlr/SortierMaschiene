@@ -38,14 +38,14 @@ public class Zahlenfeld extends JPanel{
     
     public void resetColor(){
         for(int i=0;i<z.length;i++){
-            c[i]=Color.BLACK;
+            c[i]=Color.lightGray;
         }
     }
         
     public void paint(Graphics g){
         int x,y,w,h;
         int gap=1;
-        g.setColor(Color.WHITE);
+        g.setColor(Color.gray);
         g.fillRect(0,0,getWidth()-1,getHeight()-1);
         for(int i=0;i<z.length;i++){
             g.setColor(c[i]);    

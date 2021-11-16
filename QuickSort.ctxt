@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.target=QuickSort
+comment1.params=data\ zf
+comment1.target=QuickSort(int[],\ Zahlenfeld)
+comment2.params=
+comment2.target=java.lang.String\ toString()
+comment3.params=
+comment3.target=long\ sortiere()
+numComments=4
