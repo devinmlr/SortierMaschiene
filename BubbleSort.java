@@ -37,6 +37,7 @@ public class BubbleSort extends Sortierer
                   data[i]=data[i+1];
                   data[i+1]=h;
                   vertauscht=true;
+                  tauschungen+=1;
                 }
                 if (!isRunning()) {
                     break;   

@@ -22,6 +22,7 @@ public class Main extends JFrame
     JButton st;
     JButton stop;
     JButton bDoStep;
+    JButton bClear;
     JCheckBox cbSteps;
     JCheckBox cbTone;
     JTextArea messages;
@@ -36,6 +37,9 @@ public class Main extends JFrame
         sortiererListe.addElement(new BubbleSort(data,zf));
         sortiererListe.addElement(new MySort(data,zf));
         sortiererListe.addElement(new QuickSort(data,zf));
+        sortiererListe.addElement(new BogoSort(data,zf));
+        sortiererListe.addElement(new Wirdnichtklappen(data,zf));
+        sortiererListe.addElement(new ShakerSort(data,zf));
         //TO DO: Hier Sortierer an die Liste anfügen
     }
     
@@ -116,16 +120,30 @@ public class Main extends JFrame
                        messages.append("Laufzeit: "+time+" Nanosekunden\n");
                        int abfragen=((Sortierer)list.getSelectedItem()).getAbfragen();
                        messages.append("Aufrufe: "+abfragen+" \n");
+                       int tauschungen=((Sortierer)list.getSelectedItem()).getTauschungen();
+                       messages.append("Tauschungen: "+tauschungen+" \n");
                        //System.out.println("Thread stopped..."+this);
                        stop.setEnabled(false);
                        st.setEnabled(true);
                        list.setEnabled(true);
                     }
-                }).start();
+               }).start();
                
            }
         });
         add(st);
+        
+        bClear = new JButton("Clear");
+        bClear.setForeground(Color.white);
+        bClear.setBackground(Color.gray);
+        bClear.setBounds(145,630,100,25);
+        
+        bClear.addActionListener(new ActionListener(){
+           public void actionPerformed(ActionEvent e){
+               messages.setText("");
+           }
+        });
+        add(bClear);
         
         stop=new JButton("Stop");
         stop.setForeground(Color.white);

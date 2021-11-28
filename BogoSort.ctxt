@@ -1,0 +1,12 @@
+#BlueJ class context
+comment0.target=BogoSort
+comment0.text=\r\n\ Beschreiben\ Sie\ hier\ die\ Klasse\ BubbleSort.\r\n\ \r\n\ @author\ (Ihr\ Name)\ \r\n\ @version\ (eine\ Versionsnummer\ oder\ ein\ Datum)\r\n
+comment1.params=data\ zf
+comment1.target=BogoSort(int[],\ Zahlenfeld)
+comment2.params=
+comment2.target=java.lang.String\ toString()
+comment3.params=
+comment3.target=long\ sortiere()
+comment4.params=
+comment4.target=boolean\ isSorted()
+numComments=5

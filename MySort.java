@@ -38,8 +38,8 @@ public class MySort extends Sortierer
                     if (data[f]<num) {
                         num=data[f];
                         help=f;
+                        tauschungen += 1;
                     }
-                    java.awt.Toolkit.getDefaultToolkit().beep();
                     zf.repaint();
                     
                 }
@@ -54,9 +54,9 @@ public class MySort extends Sortierer
                     if (data[f]>num) {
                         num=data[f];
                         help=f;
+                        tauschungen += 1;
                     }
                     
-                    java.awt.Toolkit.getDefaultToolkit().beep();
                     zf.repaint();
                 }
                 data[help] = data[data.length-h-1];

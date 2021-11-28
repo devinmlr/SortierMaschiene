@@ -13,6 +13,51 @@ public class QuickSort extends Sortierer
         return "Quicksort";
     }
     
+    private void quicksort(int links, int rechts) {
+        if (links < rechts) {
+            int teiler = teile(links, rechts);
+            quicksort(links, teiler - 1);
+            quicksort(teiler +1, rechts);
+        }
+    }
+    
+    public int teile (int links, int rechts) {
+        zf.repaint();
+        
+        int swap;
+        int i = links;
+        int j = rechts -1;
+        int pivot = data[rechts];
+        zf.setColor(pivot-1, Color.GREEN);
+        while (i<j) {
+            while (i<rechts && data[i]<pivot) {
+                i += 1;
+                zf.setColor(i, Color.RED);
+                abfragen += 1;
+            }
+            while (j>links && data[j] >= pivot) {
+                j -= 1;
+                zf.setColor(j, Color.RED);
+                abfragen += 1;
+            } 
+            if (i<j) {
+                swap = data[i];
+                data[i] = data[j];
+                data[j] = swap;
+                tauschungen += 1;
+            }
+        }
+        
+        if (data[i] > pivot) {
+            swap = data[i];
+            data[i] = data[rechts];
+            data[rechts] = swap;
+            tauschungen += 1;
+        }
+        pause();
+        return i;
+    }
+    
        
     public long sortiere(){
         // HINWEISE ===================================================
@@ -26,30 +71,7 @@ public class QuickSort extends Sortierer
                
         resetTimer();
         
-        int iPivot;
-        int itemLeft;
-        int itemRight;
-        int swap;
-        
-        for (int i=0; i < data.length; i++) {
-            iPivot = data.length-1;
-            
-            if (data[i] > data[iPivot]) {
-                for (int f=data.length-1-i; f >= 0; f--) {
-                    if (data[f] < data[iPivot]) {
-                        swap = data[f];
-                        data[f] = data[i];
-                        data[i] = swap;
-                        break;
-                    }
-                }
-            }
-            
-            
-            
-            zf.repaint();
-            pause(); 
-        }
+        quicksort(0,data.length-1);
            
         return getTime();
     }

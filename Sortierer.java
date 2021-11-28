@@ -17,6 +17,7 @@ public abstract class Sortierer
     private boolean waitForStep=true;
     boolean ton=true;
     public int abfragen;
+    public int tauschungen;
     
     Sortierer(int[] data, Zahlenfeld zf){
         this.zf=zf;
@@ -29,6 +30,10 @@ public abstract class Sortierer
     
     public boolean getStepMode() {
         return stepMode;
+    }
+    
+    public int getTauschungen() {
+        return tauschungen;
     }
     
     public abstract String toString();
